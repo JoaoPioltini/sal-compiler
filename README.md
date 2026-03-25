@@ -31,3 +31,53 @@ This project was developed as part of a **Compiler Design** course and aims to b
 ---
 
 ##  Project Structure
+.
+├── src/
+│   ├── lex.c
+│   ├── parser.c
+│   ├── symtab.c
+│
+├── include/
+│   ├── lex.h
+│   ├── token.h
+│
+├── main.c
+└── README.md
+
+---
+
+##  How It Works
+
+The compiler follows a modular architecture:
+
+1. **Lexer (`lex.c`)**
+   - Reads the source file character by character
+   - Produces a stream of tokens
+
+2. **Parser**
+   - Consumes tokens from the lexer
+   - Validates program structure based on SAL grammar
+
+3. **Symbol Table**
+   - Stores identifiers, types, and scope information
+
+4. **Code Generator**
+   - Produces instructions for a stack-based VM (MEPA)
+
+---
+
+## ▶️ Running the Lexer
+
+Example:
+
+```c
+while(1){
+    Token t = lex_next();
+
+    printf("Type: %d | Lexeme: %s | Line: %d\n",
+           t.type, t.lexema, t.line);
+
+    if(t.type == TK_EOF) break;
+}
+
+
